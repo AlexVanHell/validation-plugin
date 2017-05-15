@@ -18,14 +18,18 @@ Plug-in de validación de campos para uso en html con jQuery
 
 ## Implementación y Uso
 
-Usar siempre un formulario para hacer la validación
-```js
-$('form').formValidation({});
+Mandar a llamar `$('form').formValidation({});` y agregarlo dentro del `$(document).ready` o al final de la pagina.
+```html
+<script type="text/javascript">
+    $(document).ready( function() {
+        $('form').formValidation({});
+    });
+</script>
 ```
 
 ### Editar valores por defecto
 
-Puedes editar los valores predeterminados para mensajes y estilos de alerta
+Puedes editar los valores predeterminados para mensajes y estilos de alerta.
 ```js
 $('form').formValidation({
     mainAlert: true,
@@ -65,9 +69,9 @@ $('form').formValidation({
 
 ### HTML
 
-Asegurate de colocar los `<input>` dentro de alguna otra etiqueta
+Asegurate de colocar los `<input>` dentro de alguna otra etiqueta (div, section, span, etc).
 
-**NOTE:** Todos los atributis
+**NOTA:** Todos los atributos se pueden usar de forma simultanea
 
 #### Campo Obligatorio
 ```html
@@ -108,9 +112,10 @@ Asegurate de colocar los `<input>` dentro de alguna otra etiqueta
 
 
 ##### Formato de fecha (dateformat)
-Por defecto el plugin acepta un formato de fecha dd/mm/yyyy
-Para cambiarlo solo hay que hacer lo siguiente
-El plugin solo acepta formatos con `/` y `-`
+Por defecto el plugin acepta un formato de fecha (dd/mm/yyyy)
+<br> El plugin solo acepta formatos con `/` y `-`.
+<br> Para cambiarlo solo hay que hacer lo siguiente:
+
 ```html
     <!-- fomato dd-mm-yyyy -->
     <input type="text" validation-type="dateformat(dd-mm-yyyy)" />
@@ -120,7 +125,7 @@ El plugin solo acepta formatos con `/` y `-`
 ```
 
 #### Min y Max Length
-Este es para indicar el numero de caracteres que debe tener el campo como minimo o como maximo. O se puede especificar un rango
+Este es para indicar el numero de caracteres que debe tener el campo como minimo o como maximo. O se puede especificar un rango.
 ```html
     <!-- Minimo -->
     <input type="text" data-length="min 8" />
@@ -134,7 +139,7 @@ Este es para indicar el numero de caracteres que debe tener el campo como minimo
 
 #### Alertas Individuales
 
-Puedes agregar una alerta personalizada de la siguiente manera
+Puedes agregar una alerta personalizada de la siguiente manera:
 ```html
     <input type="text" alert-message="Esto es una alerta personalizada" />
 ```
