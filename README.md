@@ -67,11 +67,22 @@ $('form').formValidation({
 
 Asegurate de colocar los `<input>` dentro de alguna otra etiqueta
 
+**NOTE:** Todos los atributis
+
 #### Campo Obligatorio
 ```html
 <form>
     <div>
         <input type="text" required-field />
+    </div>
+    <div>
+        <input type="checkbox" required-field />
+    </div>
+    <div>
+        <select required-field />
+    </div>
+    <div>
+        <textarea required-field />
     </div>
 </form>
 ```
@@ -84,6 +95,7 @@ Asegurate de colocar los `<input>` dentro de alguna otra etiqueta
     </div>
 </form>
 ```
+
 ##### Tipo de validación disponible
 1. `letters` Validar que solo contenga letras y espacios
 2. `numbers` Validar que solo contenga numeros
@@ -94,6 +106,7 @@ Asegurate de colocar los `<input>` dentro de alguna otra etiqueta
 7. `price` Validar que contenga un precio valido
 8. `html`Validar que no contenga caracteres especiales html
 
+
 ##### Formato de fecha (dateformat)
 Por defecto el plugin acepta un formato de fecha dd/mm/yyyy
 Para cambiarlo solo hay que hacer lo siguiente
@@ -101,11 +114,27 @@ El plugin solo acepta formatos con `/` y `-`
 ```html
     <!-- fomato dd-mm-yyyy -->
     <input type="text" validation-type="dateformat(dd-mm-yyyy)" />
+    
     <!-- fomato mm/dd/yyyy -->
     <input type="text" validation-type="dateformat(mm/dd/yyyy)" />
 ```
 
+#### Min y Max Length
+Este es para indicar el numero de caracteres que debe tener el campo como minimo o como maximo. O se puede especificar un rango
+```html
+    <!-- Minimo -->
+    <input type="text" data-length="min 8" />
+    
+    <!-- Maximo -->
+    <input type="text" data-length="max 140" />
+    
+    <!-- Rango -->
+    <input type="text" data-length="20-30" />
+```
+
 #### Alertas Individuales
+
+Puedes agregar una alerta personalizada de la siguiente manera
 ```html
     <input type="text" alert-message="Esto es una alerta personalizada" />
 ```
