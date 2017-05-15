@@ -43,10 +43,10 @@ $('form').formValidation({
         dateformat: 'Formato de fecha debe ser (dd/mm/aaaa) y ser una fecha valida.'
     },
     style: {
-        position: 'relative',
-        z-index: 0,
-        padding: '4px',
-        background: 'red'
+        'position': 'relative',
+        'z-index': 0,
+        'padding': '4px',
+        'background': 'red'
     }
 });
 ```

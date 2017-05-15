@@ -170,6 +170,7 @@
         		var hasValidationType = input.attr('validation-type');
         		var hasMatch = input.attr('match-field');
         		var hasLenght = input.attr('data-length');
+        		var hasAlert = input.attr('alert-message');
 
         		var fieldObject = {};
         		fieldObject.isValid = true;
@@ -198,13 +199,17 @@
         			
         		}
 
-        		if ( input.is('select') ) {
-        			fieldObject.alertText = defaults.alerts.select;
+        		if ( typeof hasAlert !== typeof undefined ) {
+        			fieldObject.alertText = hasAlert;
         		} else {
-        			if ( typeof hasValidationType != typeof undefined ) {
-        				fieldObject.alertText = getValidation( input, false );
-        			}
-        		}
+        			if ( input.is('select') ) {
+	        			fieldObject.alertText = defaults.alerts.select;
+	        		} else {
+	        			if ( typeof hasValidationType != typeof undefined ) {
+	        				fieldObject.alertText = getValidation( input, false );
+	        			}
+	        		}
+        		}	
 
         		validationObject.fields.push( fieldObject );
 
@@ -461,7 +466,8 @@
 			'z-index': 0,
 			'padding': '4px',
 			'background': 'red'
-		}, onSubmitFail: function() {},
+		}, 
+		onSubmitFail: function() {},
 		onSubmitSuccess: function() {}
 	}
 
