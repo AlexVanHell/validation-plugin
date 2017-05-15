@@ -57,7 +57,7 @@ $('form').formValidation({
     onSubmitFail: function() {
         // implementar codigo en caso de tener algun campo incorrecto
     },
-    onSubmitSucces: function() {
+    onSubmitSuccess: function() {
         // implementar codigo al tener exito en todos los campos
     }
 });
