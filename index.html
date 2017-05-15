@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Index</title>
+		<meta charset="utf-8">
+		<meta name='viewport', content='width=device-width, maximum-scale=1.0 user-scalable=no'>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/validation-plugin.js"></script>
+		<script type="text/javascript">
+			$(document).ready( function() {
+				$('form#form').formValidation({
+					mainAlert: true,
+					alerts: {
+						main: 'Verifica los campos por favor'
+					},
+					onSubmitSuccess: function() {
+						alert('¡Felicitaciones! Has completado con exito')
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form id="form">
+			<div>
+				<input type="text" placeholder="Nombre" required-field>
+			</div>
+			<br />
+			<div>
+				<input type="text" placeholder="Apellido" validation-type="letters">
+			</div>
+			<br>
+			<div>
+				<input type="text" placeholder="Telefono" validation-type="numbers" data-length="8-12">
+			</div>
+			<br />
+			<div>
+				<input type="submit" name="">
+			</div>
+		</form>
+	</body>
+</html>
