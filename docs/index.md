@@ -169,3 +169,8 @@ Puedes agregar una alerta personalizada de la siguiente manera:
 ```html
 <input type="text" alert-message="Esto es una alerta personalizada" />
 ```
+
+<br>
+
+#### Para algun problema o duda con el plugin favor de contactarme a mi correo electronico
+alejandrodnl.cv@hotmail.com
