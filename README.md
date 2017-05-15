@@ -116,7 +116,7 @@ validation-type
 7. `price` Validar que contenga un precio valido
 8. `html`Validar que no contenga caracteres especiales html
 
-<br><br>
+<br>
 required-field y match-field 
 1. `required-field` Valida que el campo no este vacio
 2. `match-field` Valida que los campos coincidad (todos los campos que tengan este aributo)
