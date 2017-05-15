@@ -44,7 +44,7 @@ $('form').formValidation({
     },
     style: {
         position: 'relative',
-        zIndex: 0,
+        z-index: 0,
         padding: '4px',
         background: 'red'
     }
