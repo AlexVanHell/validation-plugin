@@ -1,7 +1,7 @@
 # JS Validation Plugin
 Plug-in de validación de campos para uso en html con jQuery
 
-## Instalacion
+## Instalación
 
 1. Añadir jQuery
 ```html
