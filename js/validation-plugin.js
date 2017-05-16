@@ -195,8 +195,7 @@
         				}
         				fieldObject.lengthText += hasLenght.split(' ')[1];
         			}
-        			fieldObject.lengthText += ' caracter(es)';
-        			
+        			fieldObject.lengthText += ' caracter(es)';	
         		}
 
         		if ( typeof hasAlert !== typeof undefined ) {
@@ -209,13 +208,33 @@
 	        				fieldObject.alertText = getValidation( input, false );
 	        			}
 	        		}
-        		}	
+        		}
 
         		validationObject.fields.push( fieldObject );
 
         		input.bind('blur change keyup', function( event ) {
         			// Validate field on event
         			initValidation( input, index, event.type );
+        		});
+        	});
+
+        	_this.find(matchTags).each( function() {
+        		var input = $(this);
+
+        		input.bind('blur change keyup', function( event ) {
+					var matchArray = [];
+	        		_this.find(matchTags).each( function( index ) {
+	        			matchArray.push( $(this).val() );
+	        		});
+    				if ( !validateMatch( matchArray ) ) {
+    					validationObject.match = false;
+    					if ( event.type !== 'keyup' ) {
+    						showAlertMessage( true, _this.find(matchTags).eq(_this.find(matchTags).length - 1), defaults.alerts.match );
+    					}
+    				} else {
+    					validationObject.match = true;
+    					showAlertMessage( false, _this.find(matchTags).eq(_this.find(matchTags).length - 1) );
+    				}
         		});
         	});
 
@@ -260,6 +279,10 @@
         		var hasMatch = input.attr('match-field');
         		var inputType = input.attr('type');
 
+        		if ( isNaN( index ) ) {
+        			index = _this.find(tags).index( input );
+        		}
+
         		if ( typeof event === typeof undefined ) { event = ''; }
         		showAlertMessage( false, input );
 
@@ -274,17 +297,6 @@
     						}
     					}
     				}
-    				if ( typeof hasMatch !== typeof undefined ) {
-        				if ( !validateMatch( $(matchTags).eq(0).val() , $(matchTags).eq(1).val() ) ) {
-        					validationObject.match = false;
-        					if ( event !== 'keyup' ) {
-        						showAlertMessage( true, $(matchTags).eq(1), defaults.alerts.match );
-        					}
-        				} else {
-        					validationObject.match = true;
-        					showAlertMessage( false, $(matchTags).eq(1) );
-        				}
-        			}
     			} else {
     				validationObject.fields[index].isValid = false;
     				if ( event !== 'keyup' ) {
@@ -376,8 +388,18 @@
 		return !variable.search(patron);
 	}
 
-	function validateMatch( variable, variable2 ) {
-		return variable === variable2 || ( variable === '' && variable2 === '' );
+	function validateMatch( array ) { // get $(selector).val() array
+		var flag = true;
+		var variable = array[0];
+		for ( var i = 1 ; i < array.length ; i++ ) { 
+			var variable2 = array[i]; // check each element
+			if ( variable2 != variable ) {
+				flag = false;
+				break;
+			}
+		}
+
+		return flag;
 	}
 
 	function validateSelect( variable ) {
